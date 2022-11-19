@@ -9,7 +9,7 @@
 
 #header{
     display: flex;
-    background: linear-gradient(#F2BF6C,white);
+    background: linear-gradient(0deg, white 0%, #92f8bb 100%);
     margin-bottom: 20px;
     height: 120px;
 }
@@ -38,7 +38,7 @@
 }
 
 .nav-ul li:hover{
-    background-color: orange;
+    background-color:#92f8bb ;
     border-radius: 20px;
 }
 

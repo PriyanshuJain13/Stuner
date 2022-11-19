@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 if(empty($err))
 {
-    $sql = "SELECT id, username, password FROM users WHERE username = ?";
+    $sql = "SELECT id, username, password FROM user WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $param_username);
     $param_username = $username;
@@ -85,19 +85,18 @@ if(empty($err))
             <ul style="padding-top: 2rem;" class="nav-ul">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Market data</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="login.php">Login</a></li>
                 <li><a href="register.php">Register</a></li>
             </ul>
         </nav>
-        <div id="dropdown">
+        <!-- <div id="dropdown">
             <button><i class="fa-regular fa-user"></i><?php echo $_SESSION['username'] ?><i class="fa-solid fa-angle-down"></i></button> 
             <div class="drop-content">
                 <a href="profile.php">Profile</a>
                 <a href="logout.php">sign-out</a>    
             </div>
-        </div>
+        </div> -->
     </header>
 
 <div class="container mt-4">

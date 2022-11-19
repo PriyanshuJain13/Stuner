@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty(trim($_POST["username"]))) {
         $username_err = "Username cannot be blank";
     } else {
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT id FROM user WHERE username = ?";
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "s", $param_username);
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     //INSERT IN DATABASE
     if (empty($username_err) && empty($confirm_password_err) && empty($password_err)) {
-        $sql = "INSERT INTO users (username,password) VALUES (?,?)";
+        $sql = "INSERT INTO user (username,password) VALUES (?,?)";
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <input type="text" class="form-control" id="inputZip">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary ">Sign in</button>
+            <button type="submit" class="btn btn-primary ">Sign up</button>
         </form>
     </div>
 
