@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    background-color: aquamarine;
+  }
+  
+  textarea {
+    width: 30%;
+    /* float: top; */
+    min-height: 250px;
+    overflow: scroll;
+    margin: auto;
+    display: inline-block;
+    background: #090909;
+    outline: none;
+    font-family: Courier, sans-serif;
+    color: white;
+    font-size: 14px;
+  }
+  
+  iframe {
+    bottom: 0;
+    position: relative;
+    width: 60%;
+    height: 25em;
+  }

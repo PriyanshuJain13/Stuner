@@ -6,7 +6,6 @@ if (!isset($_SESSION['loggedin'])  || $_SESSION['loggedin'] !== true) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,22 +13,31 @@ if (!isset($_SESSION['loggedin'])  || $_SESSION['loggedin'] !== true) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock exchange</title>
+    <title>Stuner - STUDENT CORNER</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+    <!-- scrollbar  -->
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="preloader-icon">
+            <h2><img src="images/loader.png" alt="image"></h2>
+        </div>
+    </div>
     <!-- header -->
     <header id="header">
         <a href="index.php"> <img id="logo" src="images/logo.png" alt=""></a>
         <nav class="navbar">
             <ul style="padding-top: 2rem;" class="nav-ul">
                 <li><a href="index.php">Home</a></li>
+                <li><a href="#myservice_section">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Market data</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="#footer">Contact</a></li>
                 <li><a href="register.php">Register</a></li>
             </ul>
         </nav>
@@ -37,7 +45,7 @@ if (!isset($_SESSION['loggedin'])  || $_SESSION['loggedin'] !== true) {
             <button><i class="fa-regular fa-user"></i>Hi,<?php echo $_SESSION['username'] ?><i class="fa-solid fa-angle-down"></i></button>
             <div class="drop-content">
                 <a href="profile.php">Profile</a>
-                <a href="logout.php">sign-out</a>
+                <a href="logout.php">Logout</a>
             </div>
         </div>
     </header>
@@ -45,93 +53,152 @@ if (!isset($_SESSION['loggedin'])  || $_SESSION['loggedin'] !== true) {
     <!-- slideshow container -->
     <div class="slide-container">
         <div class="mySlides fade">
-            <img src="images/slide1.png" style="width:100%">
+            <img src="images/banner3.jpeg" style="width:100%">
         </div>
         <div class="mySlides fade">
-            <img src="images/slide2.jpeg" style="width:100%">
+            <img src="images/banner1.jpg" style="width:100%">
         </div>
         <div class="mySlides fade">
-            <img src="images/slide1.png" style="width:100%">
+            <img src="images/banner2.png" style="width:100%">
         </div>
         <div class="mySlides fade">
-            <img src="images/slide2.jpeg" style="width:100%">
+            <img src="images/slide3.jpeg" style="width:100%">
         </div>
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
+    <hr>
+    <!-- our services section  -->
+    <br><br>
+    <div class="container-fluid servicebody" id="myservice_section" >
+        <div class="service-are" id="service">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title text-center">
+                        <h2><b>SERVICES</b></h2>
+                        <p>
+                            These are the services we provide and it will help you combine your resources hence saving time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="service-wrap text-center">
+                        <div class="service-icon">
+                            <i class="fa fa-leaf"></i>
+                        </div>
+                        <h3><a href="programming.php">PROGRAMMING</a></h3>
+                        <p>
+                            Here you will find all the lecture tutorials related to programming languages
+                            like JAVA,PYTHON,ANDROID etc
+                        </p>
+                    </div>
+                </div>
 
-    <!-- stock list  -->
-    <?php
-    $url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo&datatype=csv';
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="service-wrap text-center">
+                        <div class="service-icon">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <h3><a href="video.php">VIDEO TUTORIALS</a></h3>
+                        <p>
+                            Here you will find all the videos tutorials related to programming languages
+                            like JAVA,PYTHON,ANDROID etc
+                        </p>
+                    </div>
+                </div>
 
-    $data = file_get_contents($url);
-    $row = explode("\n", $data);
-    $count = count($row) - 1;
-
-    for ($x = 0; $x < $count; $x++) {
-        $day[] = explode(",", $row[$x]);
-    }
-    // echo "<pre>";
-    // print_r($day);
-    // echo "</pre>";
-
-    ?>
-    <section class="stock-list">
-
-        <!-- form  -->
-        <div class="form">
-            <form action="">
-                <input type="text" placeholder="Enter name of stock" class="insert">
-                <input type="submit" value="submit" class="submit">
-            </form>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="service-wrap text-center">
+                        <div class="service-icon">
+                        <i class="fa-sharp fa-solid fa-dumbbell"></i>
+                        </div>
+                        <h3><a href="online_quize/quizhome.php">EXERCISE</a></h3> <!--  exercise/exercise.php -->
+                        <p>
+                            Here you will find problem programs for practice and their implementation also which will improve your coding skill
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <!-- display table  -->
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th><?php echo $day[0][0]?></th>
-                        <th><?php echo $day[0][1]?></th>
-                        <th><?php echo $day[0][2]?></th>
-                        <th><?php echo $day[0][3]?></th>
-                        <th><?php echo $day[0][4]?></th>
-                        <th><?php echo $day[0][5]?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        for($x = 1;$x < $count;$x++)
-                        {
-                            $day[] = explode(",",$row[$x]);
-                            echo "<tr>";
-                            echo"<td>".$x."</td>";
-                            echo"<td>".$day[$x][0]."</td>";
-                            echo"<td>".$day[$x][1]."</td>";
-                            echo"<td>".$day[$x][2]."</td>";
-                            echo"<td>".$day[$x][3]."</td>";
-                            echo"<td>".$day[$x][4]."</td>";
-                            echo"<td>".$day[$x][5]."</td>";
-                            echo"</tr>";
-                        }
-                    ?>
-                    <tr>
-                </tbody>
-            </table>
+    </div>
 
+
+    <!-- faq section  -->
+    <div class="faqs-container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="questions-container">
+            <div class="content-container">
+                <div class="faq-header">
+                    <h3>How do I purchase a membership?</h3>
+                    <span class="open active">+</span>
+                    <span class="close">-</span>
+                </div>
+
+                <div class="content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Eveniet, veniam!
+                    </p>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                        voluptatem voluptatibus temporibus nemo amet tempore aperiam
+                        pariatur laboriosam qui vel!
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="faq-header">
+                    <h3>Which platforms are supported?</h3>
+                    <span class="open active">+</span>
+                    <span class="close">-</span>
+                </div>
+
+                <div class="content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                        voluptatem voluptatibus temporibus nemo amet tempore aperiam
+                        pariatur laboriosam qui vel!
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="faq-header">
+                    <h3>How to cancel the subscription?</h3>
+                    <span class="open active">+</span>
+                    <span class="close">-</span>
+                </div>
+
+                <div class="content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Eveniet, veniam!
+                    </p>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                        voluptatem voluptatibus temporibus nemo amet tempore aperiam
+                        pariatur laboriosam qui vel!
+                    </p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
 
     <!-- footer -->
     <footer>
-        <div class="footer-container">
+        <div class="footer-container" id="footer">
 
             <div class="topSection">
                 <div class="about-us">
                     <h3>About Us</h3>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, natus facilis hic recusandae dignissimos cumque illo aliquam reiciendis nisi autem?</p>
+                    <p>an initiative towards changing the way of learning in this mordern era of online education and replicate its positive action to society to replicate them</p>
                     <div class="icons">
                         <i class="fa-brands fa-facebook fa-2x"></i>
                         <i class="fa-brands fa-twitter fa-2x"></i>
@@ -145,25 +212,30 @@ if (!isset($_SESSION['loggedin'])  || $_SESSION['loggedin'] !== true) {
                     <hr>
                     <span>
                         <i class="fa-solid fa-location-dot"></i>
-                        <p>Noida,Uttar Pradesh</p>
+                        <p style="display:inline-block ;">Noida,Uttar Pradesh</p>
                     </span>
+                    <br>
                     <span>
                         <i class="fa-solid fa-phone"></i>
-                        <p>+91 7088556536</p>
+                        <p style="display:inline-block ;">+91 7088556536</p>
                     </span>
+                    <br>
                     <span>
                         <i class="fa-solid fa-envelope"></i>
-                        <p>jse.mail.com</p>
+                        <p style="display:inline-block ;">jse@mail.com</p>
                     </span>
                 </div>
             </div>
             <div class="bottomSection">
-                <span>Created by Priyanshu,Anirudh,Shubhangam | @2020 All Rights Reserved</span>
+                <span>Created by INCOGNITOS | @2020 All Rights Reserved</span>
             </div>
         </div>
     </footer>
 
+    <script src="js/faq.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/scroll.js"></script>
 </body>
 
 </html>
